@@ -43,10 +43,10 @@ CREATE TABLE clinic_sessions(
   UNIQUE(id,clinic_id)
 );
 INSERT INTO clinic_sessions(clinic_id,branch_id,code,display_name,starts_at,ends_at,sort_order)
-SELECT clinic_id,id,'MORNING','Morning','00:00','12:00',1 FROM branches
-UNION ALL SELECT clinic_id,id,'AFTERNOON','Afternoon','12:00','17:00',2 FROM branches
-UNION ALL SELECT clinic_id,id,'EVENING','Evening','17:00','21:00',3 FROM branches
-UNION ALL SELECT clinic_id,id,'NIGHT','Night','21:00','00:00',4 FROM branches;
+SELECT clinic_id,id,'MORNING','Morning',TIME '00:00',TIME '12:00',1 FROM branches
+UNION ALL SELECT clinic_id,id,'AFTERNOON','Afternoon',TIME '12:00',TIME '17:00',2 FROM branches
+UNION ALL SELECT clinic_id,id,'EVENING','Evening',TIME '17:00',TIME '21:00',3 FROM branches
+UNION ALL SELECT clinic_id,id,'NIGHT','Night',TIME '21:00',TIME '00:00',4 FROM branches;
 
 CREATE TABLE clinic_qr_codes(
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
